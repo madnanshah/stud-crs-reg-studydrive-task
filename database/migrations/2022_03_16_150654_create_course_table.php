@@ -19,9 +19,11 @@ return new class extends Migration
                 $table->id();
             });
 
+            // adding column nam with only lowercase value constraint
             DB::statement('ALTER TABLE course
             ADD COLUMN name VARCHAR(255) NOT NULL CHECK(BINARY name = LOWER(name))');
-    
+
+            // adding column capacity with constraint (only the value between 3 and 8 including both)
             DB::statement('ALTER TABLE course
             ADD COLUMN capacity TINYINT NOT NULL CHECK(BINARY capacity >=3 AND capacity <=8)');
         }

@@ -12,6 +12,7 @@ class Course extends Model
 
     protected $table = 'course';
 
+    // gets courses registered by students (rows in table registration) 
     public function registeredStudents()
     {
         return $this->hasMany(Registration::class, 'course_id', 'id');

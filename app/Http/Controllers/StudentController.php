@@ -32,8 +32,15 @@ class StudentController extends Controller
     public function register(Request $request){
         $validated = $this->validation->register($request);
 
+        // check if data sent in request is valid (the validation return null if all data is valid)
         if(!$validated){
+
+            // call to create row through StudentService to RegistrationRepository
             $response = $this->service->register($request->all());
+
+            // check if the creation call above returned some data
+            //it will not be null even DB table has zero rows
+            //it will be null only if creation call got any exception (handled in RegistrationRepository)
             if($response){
                 return response()->json(
                     ResponseHelper::generateResponse(
@@ -44,7 +51,8 @@ class StudentController extends Controller
                     )
                 );
             }
-            else{
+            else // case when creation call in RegistrationRepository faces some exception
+            {
                 return response()->json(
                     ResponseHelper::generateResponse(
                         false,
@@ -55,7 +63,8 @@ class StudentController extends Controller
                 );
             }
         }
-        else{
+        else // the case when data is not valid (validation fails)
+        {
             return response()->json(
                 ResponseHelper::generateResponse(
                     false,
