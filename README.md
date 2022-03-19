@@ -188,20 +188,33 @@ With the existance of Laravel MVC, the **Controller - Service - Repository** arc
 ### Controller - Service - Repository architecture
 
 - Normally
-- - For each DB table there is a model
-- - For each model there is a repository
-- - For each repository there is a service
-- - For each service there is a controller
-- - So basicly all layers are 1:1 to each other.
+ - For each DB table there is a model
+ - For each model there is a repository
+ - For each repository there is a service
+ - For each service there is a controller
+ - So basicly all layers are 1:1 to each other.
 
-Some times there is no need of any of above mentioned files (depends on further architechture standard of the organization) 
+Some times there is no need of some of above mentioned files (depends on further architechture standard of the organization) 
 
 - In this project
-There are mainly three DB tables
-- - student
-- - course
-- - registration
 
-So for each DB table there is a Model but there are only two Repositories
-- - CourseRepositiries
-- - RegistrationRepositiries
+There are mainly three DB tables
+ - student
+ - course
+ - registration
+
+So for each DB table there is a Model but there are only two repositories
+ - CourseRepositiries
+ - RegistrationRepositiries
+
+There is no interaction with Student Model other than that of the StudentSeeder. So, repository for Student model is not created.
+
+There are two Controller and Services for each i.e., student and course.
+
+ - CourseController
+ - CourseService
+ - StudentController 
+ - StudentService
+
+Regarding course, there is a direct flow, i.e, Controller -> Service -> Repository -> Model. So, all of them are created.
+While, Registration model is only required with in the student flow. So, Controller and Service only for students not for Registration Model.
