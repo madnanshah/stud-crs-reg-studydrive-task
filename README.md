@@ -231,9 +231,9 @@ While, Registration model is only required with in the Student flow. So, Control
 
 CourseSeeder and StudentSeeder are built to populate the tables intitially.
 
-DB Tables
+## Database
 
-student 
+#### student
 
 <table>
   <tr>
@@ -260,22 +260,155 @@ student
     <td>NULL</td>
     <td></td>
   </tr>
+  <tr>
+    <td>email</td>
+    <td>varchar(255)</td>
+    <td>NO</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>varchar(255)</td>
+    <td>NO</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>deleted_at</td>
+    <td>timestamp</td>
+    <td>YES</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>timestamp</td>
+    <td>YES</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>deleted_at</td>
+    <td>timestamp</td>
+    <td>YES</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
 </table>
 
-|| -- Field -- || -- Type -- || -- Null -- || -- Key -- || -- Default -- || -- Extra  
- ===================================================================================
-|| --- id ---- || -- bigint(20) -- || -- Null -- || -- Key -- || -- Default -- || -- Extra  
-  id ||bigint(20) unsigned
-NO
-PRI
-NULL
-auto_increment
- course	
 
-id		   bigint(20) unsigned
-NO
-PRI
-NULL
-auto_increment
+#### course
 
-registration
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Key</th>
+	<th>Constraints</th>
+    <th>Default</th>
+
+    <th>Extra</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>bigint(20) unsigned</td>
+    <td>NO</td>
+    <td>PRI</td>
+    <td>NULL</td>
+	<th>PRIMARY KEY</th>
+    <td>auto_increment</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>varchar(255)</td>
+    <td>NO</td>
+    <td></td>
+    <td>NULL</td>
+	<td>CHECK(BINARY name = LOWER(name))</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>capacity</td>
+    <td>tinyint</td>
+    <td>NO</td>
+    <td></td>
+    <td>NULL</td>
+	<td>CHECK(BINARY capacity >=3 AND capacity <=8)</td>
+    <td></td>
+  </tr>
+</table>
+
+#### registration
+
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Key</th>
+    <th>Default</th>
+	<th>Constraints</th>
+    <th>Extra</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>bigint(20) unsigned</td>
+    <td>NO</td>
+    <td>PRI</td>
+    <td>NULL</td>
+	<th>PRIMARY KEY</th>
+    <td>auto_increment</td>
+  </tr>
+  <tr>
+    <td>student_id</td>
+    <td>bigint(20) unsigned</td>
+    <td>NO</td>
+    <td>MUL</td>
+    <td>NULL</td>
+	<th>FOREIGN KEY</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td>course_id</td>
+    <td>bigint(20) unsigned</td>
+    <td>NO</td>
+    <td>MUL</td>
+    <td>NULL</td>
+	<th>FOREIGN KEY</th>
+    <td></td>
+  </tr>
+  <tr>
+    <td>registered_on</td>
+    <td>timestamp</td>
+    <td>NO</td>
+    <td></td>
+    <td>current_timestamp()</td>
+	<td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>timestamp</td>
+    <td>YES</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>deleted_at</td>
+    <td>timestamp</td>
+    <td>YES</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
