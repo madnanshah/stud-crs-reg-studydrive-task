@@ -241,6 +241,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <th>Type</th>
     <th>Null</th>
     <th>Key</th>
+	<th>Constraints</th>
     <th>Default</th>
     <th>Extra</th>
   </tr>
@@ -249,6 +250,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>bigint(20) unsigned</td>
     <td>NO</td>
     <td>PRI</td>
+	<th>PRIMARY KEY</th>
     <td>NULL</td>
     <td>auto_increment</td>
   </tr>
@@ -257,6 +259,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>varchar(255)</td>
     <td>NO</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -265,6 +268,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>varchar(255)</td>
     <td>NO</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -273,6 +277,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>varchar(255)</td>
     <td>NO</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -281,6 +286,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>timestamp</td>
     <td>YES</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -289,6 +295,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>timestamp</td>
     <td>YES</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -297,6 +304,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>timestamp</td>
     <td>YES</td>
     <td></td>
+	<th></th>
     <td>NULL</td>
     <td></td>
   </tr>
@@ -313,7 +321,6 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <th>Key</th>
 	<th>Constraints</th>
     <th>Default</th>
-
     <th>Extra</th>
   </tr>
   <tr>
@@ -331,7 +338,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>NO</td>
     <td></td>
     <td>NULL</td>
-	<td>CHECK(BINARY name = LOWER(name))</td>
+	<td>CHECK(lowercase only)</td>
     <td></td>
   </tr>
   <tr>
@@ -340,7 +347,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>NO</td>
     <td></td>
     <td>NULL</td>
-	<td>CHECK(BINARY capacity >=3 AND capacity <=8)</td>
+	<td>CHECK(between 3 & 8)</td>
     <td></td>
   </tr>
 </table>
