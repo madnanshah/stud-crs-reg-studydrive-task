@@ -23,16 +23,18 @@ The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It retu
     "message": "Please select a course.",
     "content": [
         {
-            "id": 2,
-            "name": "zueaoabusf",
-            "capacity": 8,
-            "registered_students_count": 5
-        },
-        {
-            "id": 3,
+            "id": 1,
             "name": "nlkgfckas3",
             "capacity": 5,
-            "registered_students_count": 2
+            "registered_students_count": 0,
+            "availability": true
+        },
+        {
+            "id": 2,
+            "name": "rbsdv1gvc5",
+            "capacity": 8,
+            "registered_students_count": 8,
+            "availability": false
         }
     ]
 }
