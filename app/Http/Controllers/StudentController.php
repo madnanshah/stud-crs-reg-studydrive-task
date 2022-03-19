@@ -13,11 +13,15 @@ class StudentController extends Controller
     /**
      * @var StudentService
      */
+    // We are in StudentController (Controller of Student), we named it as "$service".
+    // So it will be understandable that this is an instance of "StudentService" (Service of Student)
     private StudentService $service;
 
     /**
      * @var StudentValidation
      */
+    // We are in StudentController (Controller of Student), we named it as "$validation". 
+    // So it will be understandable that this is instance of "StudentValidation" (Validation of Student)
     private StudentValidation $validation;
 
     /**
@@ -32,14 +36,14 @@ class StudentController extends Controller
     public function register(Request $request){
         $validated = $this->validation->register($request);
 
-        // check if data sent in request is valid (the validation return null if all data is valid)
-        if(!$validated){
+        // check if data sent in request is valid 
+        // the validation returns null if all data is valid
+        if(is_null($validated)){
             // call to create row through StudentService to RegistrationRepository
             $response = $this->service->register($request->get('data'));
 
             // check if the creation call above returned some data
-            //it will not be null even DB table has zero rows
-            //it will be null only if creation call got any exception (handled in RegistrationRepository)
+            // it will be false, if create (insert) call got any exception (handled in RegistrationRepository)
             if($response){
                 return response()->json(
                     ResponseHelper::generateResponse(
@@ -50,7 +54,7 @@ class StudentController extends Controller
                     )
                 );
             }
-            else // case when creation call in RegistrationRepository faces some exception
+            else // case when create (insert) call in RegistrationRepository faces some exception
             {
                 return response()->json(
                     ResponseHelper::generateResponse(
@@ -62,16 +66,29 @@ class StudentController extends Controller
                 );
             }
         }
-        else // the case when data is not valid (validation fails)
+        else // the case when validation fails ($validated is not null)
         {
-            return response()->json(
-                ResponseHelper::generateResponse(
-                    false,
-                    Config::get('constants.RESPONSE_CODES.BAD_REQUEST'),
-                    Config::get('constants.RESPONSE_MESSAGES.BAD_REQUEST'),
-                    $validated
-                )
-            );
+            if($validated){ // when any rule of validation not passes
+                return response()->json(
+                    ResponseHelper::generateResponse(
+                        false,
+                        Config::get('constants.RESPONSE_CODES.BAD_REQUEST'),
+                        Config::get('constants.RESPONSE_MESSAGES.BAD_REQUEST'),
+                        $validated
+                    )
+                );
+            }
+            else // when any exception occurs while validating data ($validated is false)
+            {
+                return response()->json(
+                    ResponseHelper::generateResponse(
+                        false,
+                        Config::get('constants.RESPONSE_CODES.SERVER_ERROR'),
+                        Config::get('constants.RESPONSE_MESSAGES.SERVER_ERROR'),
+                        $validated
+                    )
+                );
+            }
         }
     }
 }

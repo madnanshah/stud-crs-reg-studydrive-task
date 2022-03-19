@@ -15,7 +15,7 @@ class Course extends Model
 
     public function registeredStudents()
     {
-        // One to many relationship with  'registration' table
+        // One to many relationship with 'Registration' model ('registration' DB table)
         return $this->hasMany(Registration::class, 'course_id', 'id');
     }
 

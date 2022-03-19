@@ -11,7 +11,7 @@ Class RegistrationRepository
         try {
             return Registration::create($data);
         } catch (Exception $e) {
-            return null;
+            return false;
         }
     }
 }

@@ -9,6 +9,8 @@ Class CourseService
     /**
      * @var CourseRepository
      */
+    // We named it "$repo". As we are in CourseService, it is understandable that this 
+    // instance is of CourseRepository.
     private CourseRepository $repo;
 
     /**

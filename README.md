@@ -1,4 +1,4 @@
-# Universit courses registration portal (API)
+# Universit courses registration portal (APIs)
 
 In this repository, following two APIs are built.
 
@@ -104,9 +104,9 @@ It returns mainly three types of responses (success, validation fail, and server
 }
 ```
 
-### Collection of APIs
+## Collection of APIs
 
-Following is collection of APIs (JSON)
+Following is the collection of APIs (JSON)
 ```
 {
 	"info": {
@@ -181,33 +181,34 @@ Following is collection of APIs (JSON)
 - Composer 2.2.6
 - MySQL 10.4.21
 
-## Project architecture
+## Architecture
 
-With the existance of Laravel MVC, the **Controller - Service - Repository** architecture followed in this project. **Validations**, **Rules**, **Helpers** and **Constants** are maintained separately.
+With the existance of Laravel MVC, the **Controller - Service - Repository** architecture is followed in this project. **Validations**, **Rules**, **Helpers** and **Constants** are maintained separately.
 
 ### Controller - Service - Repository architecture
 
-- Normally
+#### Normally
+
  - For each DB table there is a model
  - For each model there is a repository
  - For each repository there is a service
  - For each service there is a controller
  - So basicly all layers are 1:1 to each other.
 
-Some times there is no need of some of above mentioned files (depends on further architechture standard of the organization) 
+Some times there is no need of some of above mentioned files. It depends on further architechture standard of the organization.
 
-- In this project
+#### In this project
 
 There are mainly three DB tables
   - student
   - course
   - registration
 
-So for each DB table there is a Model but there are only two repositories
+So, for each DB table there is a Model but there are only two repositories
   - CourseRepositiries
   - RegistrationRepositiries
 
-There is no interaction with Student Model other than that of the StudentSeeder. So, repository for Student model is not created.
+There is no interaction with Student Model other than that of StudentSeeder. So, repository for Student model is not created.
 
 There are two Controller and Services for each i.e., student and course.
 
@@ -216,10 +217,10 @@ There are two Controller and Services for each i.e., student and course.
   - StudentController 
   - StudentService
 
-Regarding course, there is a direct flow, i.e, Controller -> Service -> Repository -> Model. So, all of them are created.
+Regarding course, there is complete flow from Controller to DB tabel. So, all of them are created, i.e, Controller -> Service -> Repository -> Model.
 While, Registration model is only required with in the Student flow. So, Controller and Service is creaded only for student not for Registration Model.
 
-### Validations, Rules, Helpers, and Constants
+#### Validations, Rules, Helpers, and Constants
 
 - As there is only one request where user is passing data in request i.e, *students/register*. So, there is a StudentValidation to validate the request.
 - RegistrationRule is also maintained that is being used in StudentValidation.

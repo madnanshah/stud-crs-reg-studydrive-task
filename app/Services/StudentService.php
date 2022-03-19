@@ -9,6 +9,10 @@ Class StudentService
     /**
      * @var RegistrationRepository
      */
+    // I named it as "$registrationRepo", not "$repo", 
+    // We are in StudentService (Service of Student) 
+    // And making instance of RegistrationRepository (Repository of Registration not Student)
+    // So this name will differentiate it from "StudentRepository"
     private RegistrationRepository $registrationRepo;
 
     /**

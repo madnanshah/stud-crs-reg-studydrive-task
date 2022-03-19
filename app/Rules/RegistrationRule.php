@@ -28,10 +28,8 @@ class RegistrationRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $courseCapacity = Course::where('id',$value)->pluck('capacity');
-        $registeredCount = Registration::where('course_id',$value)->count();
-        return $courseCapacity ?
-            ($registeredCount < $courseCapacity[0] ? true : false) : false;
+        $course = Course::where('id',$value)->first();
+        return $course->available;
     }
 
     /**

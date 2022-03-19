@@ -24,18 +24,18 @@ class CourseController extends Controller
 
     public function index(){
 
-        $courses = $this->service->getAll();
-        if($courses){
+        $response = $this->service->getAll();
+        if($response){ // $response is not null even there is no course in DB.
             return response()->json(
                 ResponseHelper::generateResponse(
                     true,
                     Config::get('constants.RESPONSE_CODES.SUCCESS'),
                     'Please select a course.',
-                    $courses
+                    $response
                 )
             );
         }
-        else{
+        else{ // $response will be 'false' if there is any exception while retreiving courses from BD.
             return response()->json(
                 ResponseHelper::generateResponse(
                     false,
