@@ -199,22 +199,29 @@ Some times there is no need of some of above mentioned files (depends on further
 - In this project
 
 There are mainly three DB tables
- - student
- - course
- - registration
+  - student
+  - course
+  - registration
 
 So for each DB table there is a Model but there are only two repositories
- - CourseRepositiries
- - RegistrationRepositiries
+  - CourseRepositiries
+  - RegistrationRepositiries
 
 There is no interaction with Student Model other than that of the StudentSeeder. So, repository for Student model is not created.
 
 There are two Controller and Services for each i.e., student and course.
 
- - CourseController
- - CourseService
- - StudentController 
- - StudentService
+  - CourseController
+  - CourseService
+  - StudentController 
+  - StudentService
 
 Regarding course, there is a direct flow, i.e, Controller -> Service -> Repository -> Model. So, all of them are created.
-While, Registration model is only required with in the student flow. So, Controller and Service only for students not for Registration Model.
+While, Registration model is only required with in the Student flow. So, Controller and Service is creaded only for student not for Registration Model.
+
+### Validations, Rules, Helpers, and Constants
+
+- As there is only one request where user is passing data in request i.e, *students/register*. So, there is a StudentValidation to validate the request.
+- RegistrationRule is also maintained that is being used in StudentValidation.
+- To generate the responses of requests identically (to some extent), Responsehelper is created. So that the reponse can be formated in same manner.
+- Some constants are described in constants in config.
