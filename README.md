@@ -1,4 +1,4 @@
-# Universit courses registration portal (APIs)
+# University courses registration portal (APIs)
 
 In this repository, following two APIs are built.
 
