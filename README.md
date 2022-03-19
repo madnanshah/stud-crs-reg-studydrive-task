@@ -169,4 +169,11 @@ Following is collection of APIs (JSON)
 
 ## Environment
 
+- PHP 8.1.2
+- Laravel 9.5.1
+- Composer 2.2.6
+- MySQL 10.4.21
 
+## Project architecture
+
+With the existance of Laravel MVC, the ***Controller - Service - Repository*** architecture followed in this project.  ***Validations***, ***Rules***, ***Helpers*** and ***Constants*** are maintained separately.
