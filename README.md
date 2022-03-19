@@ -226,3 +226,56 @@ While, Registration model is only required with in the Student flow. So, Control
 - RegistrationRule is also maintained that is being used in StudentValidation.
 - To generate the responses of requests identically (to some extent), Responsehelper is created. So that the reponse can be formated in same manner.
 - Some constants are described in constants in config.
+
+#### Seeders
+
+CourseSeeder and StudentSeeder are built to populate the tables intitially.
+
+DB Tables
+
+student 
+
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Type</th>
+    <th>Null</th>
+    <th>Key</th>
+    <th>Default</th>
+    <th>Extra</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>bigint(20) unsigned</td>
+    <td>NO</td>
+    <td>PRI</td>
+    <td>NULL</td>
+    <td>auto_increment</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>varchar(255)</td>
+    <td>NO</td>
+    <td></td>
+    <td>NULL</td>
+    <td></td>
+  </tr>
+</table>
+
+|| -- Field -- || -- Type -- || -- Null -- || -- Key -- || -- Default -- || -- Extra  
+ ===================================================================================
+|| --- id ---- || -- bigint(20) -- || -- Null -- || -- Key -- || -- Default -- || -- Extra  
+  id ||bigint(20) unsigned
+NO
+PRI
+NULL
+auto_increment
+ course	
+
+id		   bigint(20) unsigned
+NO
+PRI
+NULL
+auto_increment
+
+registration
