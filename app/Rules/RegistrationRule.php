@@ -29,7 +29,8 @@ class RegistrationRule implements Rule
     public function passes($attribute, $value)
     {
         $course = Course::where('id',$value)->first();
-        return $course->available;
+        // is_available field is appended in Course model 
+        return $course->is_available;
     }
 
     /**

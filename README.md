@@ -12,7 +12,7 @@ This API returns list of all courses. Eeach couse contains following information
 - name
 - capacity (maximum student registration)
 - registered_students (total registered students)
-- available (if course is available for registration, ture/ false)
+- is_available (Is course available for registration? true/false)
 
 The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It returns the response in JSON format. Below are the sample responses of this API
 
@@ -28,14 +28,14 @@ The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It retu
             "name": "nxxoanpeh0",
             "capacity": 4,
             "registered_students": 4,
-            "available": false
+            "is_available": false
         },
         {
             "id": 2,
             "name": "5glej6z0md",
             "capacity": 5,
-            "registered_students": 0,
-            "available": true
+            "registered_students": 3,
+            "is_available": true
         }
     ]
 }

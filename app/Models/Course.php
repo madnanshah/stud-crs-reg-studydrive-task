@@ -11,7 +11,7 @@ class Course extends Model
     use HasFactory;
 
     protected $table = 'course';
-    protected $appends = ['registered_students','available'];
+    protected $appends = ['registered_students','is_available'];
 
     public function registeredStudents()
     {
@@ -24,7 +24,7 @@ class Course extends Model
         return $this->registeredStudents()->count();
     }
 
-    public function getAvailableAttribute(){
+    public function getIsAvailableAttribute(){
         // if registered students are less then capacity, then true else false
         return $this->registeredStudents()->count() < $this->capacity;
     }
