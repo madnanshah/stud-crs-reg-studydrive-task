@@ -5,13 +5,14 @@ In this repository, following two APIs are built.
 - API to show list of all offered courses
 - API for course registraion
 
-## 1. API to show list of all offered courses
+## API to show list of all offered courses
 
 This API returns list of all courses. Eeach couse contains following information.
 - id
 - name
 - capacity (maximum student registration)
-- registered_students_count (number of registered students)
+- registered_students (total registered students)
+- available (if course is available for registration, ture/ false)
 
 The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It returns the response in JSON format. Below are the sample responses of this API
 
@@ -24,17 +25,17 @@ The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It retu
     "content": [
         {
             "id": 1,
-            "name": "nlkgfckas3",
-            "capacity": 5,
-            "registered_students_count": 0,
-            "availability": true
+            "name": "nxxoanpeh0",
+            "capacity": 4,
+            "registered_students": 4,
+            "available": false
         },
         {
             "id": 2,
-            "name": "rbsdv1gvc5",
-            "capacity": 8,
-            "registered_students_count": 8,
-            "availability": false
+            "name": "5glej6z0md",
+            "capacity": 5,
+            "registered_students": 0,
+            "available": true
         }
     ]
 }
@@ -49,14 +50,16 @@ The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It retu
 }
 ```
 
-## 2. API for course registraion
+## API for course registraion
 
-The is API is to register any course. The endpoint is "{{base_url}}/students/register" (POST request). The data required to be passed is "student_id" and "course_id" following is an example (very basic structure).
+This API is to register any course. The endpoint is "{{base_url}}/students/register" (POST request). The data required to be passed is "student_id" and "course_id" following is an example (very basic structure).
 
 ```
 {
-    "student_id": 12,
-    "course_id": 4
+    "data":{
+        "student_id": "1",
+        "course_id": "5"
+    }
 }
 ```
 
@@ -101,6 +104,8 @@ It returns mainly three types of responses (success, validation fail, and server
 }
 ```
 
+### Collection of APIs
+
 Following is collection of APIs (JSON)
 ```
 {
@@ -128,7 +133,7 @@ Following is collection of APIs (JSON)
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"student_id\": 7,\n    \"course_id\": 4\n}",
+					"raw": "{\n    \"data\":{\n        \"student_id\": \"1\",\n        \"course_id\": \"5\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -178,4 +183,25 @@ Following is collection of APIs (JSON)
 
 ## Project architecture
 
-With the existance of Laravel MVC, the ***Controller - Service - Repository*** architecture followed in this project.  ***Validations***, ***Rules***, ***Helpers*** and ***Constants*** are maintained separately.
+With the existance of Laravel MVC, the **Controller - Service - Repository** architecture followed in this project. **Validations**, **Rules**, **Helpers** and **Constants** are maintained separately.
+
+### Controller - Service - Repository architecture
+
+- Normally
+- - For each DB table there is a model
+- - For each model there is a repository
+- - For each repository there is a service
+- - For each service there is a controller
+- - So basicly all layers are 1:1 to each other.
+
+Some times there is no need of any of above mentioned files (depends on further architechture standard of the organization) 
+
+- In this project
+There are mainly three DB tables
+- - student
+- - course
+- - registration
+
+So for each DB table there is a Model but there are only two Repositories
+- - CourseRepositiries
+- - RegistrationRepositiries

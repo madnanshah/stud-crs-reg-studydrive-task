@@ -34,9 +34,8 @@ class StudentController extends Controller
 
         // check if data sent in request is valid (the validation return null if all data is valid)
         if(!$validated){
-
             // call to create row through StudentService to RegistrationRepository
-            $response = $this->service->register($request->all());
+            $response = $this->service->register($request->get('data'));
 
             // check if the creation call above returned some data
             //it will not be null even DB table has zero rows

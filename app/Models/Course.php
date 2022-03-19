@@ -11,16 +11,21 @@ class Course extends Model
     use HasFactory;
 
     protected $table = 'course';
-    protected $appends = ['availability'];
+    protected $appends = ['registered_students','available'];
 
-    // gets courses registered by students (rows in table registration) 
     public function registeredStudents()
     {
+        // One to many relationship with  'registration' table
         return $this->hasMany(Registration::class, 'course_id', 'id');
     }
 
-    // if course is avaialble or not
-    public function getAvailabilityAttribute(){
+    public function getRegisteredStudentsAttribute(){
+        //total registered students to this course
+        return $this->registeredStudents()->count();
+    }
+
+    public function getAvailableAttribute(){
+        // if registered students are less then capacity, then true else false
         return $this->registeredStudents()->count() < $this->capacity;
     }
 }

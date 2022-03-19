@@ -9,11 +9,10 @@ Class StudentValidation
 {
     public function register($request)
     {
-        $data = $request->all();
-
+        $data = $request->get('data');
         $validator = Validator::make($data,[
             'course_id' => 'required|integer|exists:course,id',
-            'student_id' => 'required|integer|exists:student,id|unique:registration,student_id,null,id,course_id,'.$request->get('course_id')
+            'student_id' => 'required|integer|exists:student,id|unique:registration,student_id,null,id,course_id,'.$data['course_id']
         ]);
 
         if ($validator->fails()) {
