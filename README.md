@@ -233,7 +233,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
 
 ## Database
 
-#### student
+### student
 
 <table>
   <tr>
@@ -311,7 +311,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
 </table>
 
 
-#### course
+### course
 
 <table>
   <tr>
@@ -352,7 +352,7 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
   </tr>
 </table>
 
-#### registration
+### registration
 
 <table>
   <tr>
@@ -419,3 +419,39 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td></td>
   </tr>
 </table>
+
+## Installation
+
+### Database Creation
+
+An empty database of any name is required to be created
+
+### Environment Configuration
+
+Following parameters are rquired to be updated in .env file according to created database.
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=task
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+### Database tables creation
+
+To create required database tables, it is  required to run command below.
+
+```
+php artisan migrate
+```
+
+### Data addition in tables
+
+For testing the app, some random records are required to be inserted in tables. Following commands will perform that operation.
+
+```
+php artisan db:seed --class=StudentSeeder
+php artisan db:seed --class=CourseSeeder
+```
