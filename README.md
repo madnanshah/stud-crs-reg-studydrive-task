@@ -241,8 +241,8 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <th>Type</th>
     <th>Null</th>
     <th>Key</th>
-	<th>Constraints</th>
     <th>Default</th>
+	<th>Constraints</th>
     <th>Extra</th>
   </tr>
   <tr>
@@ -250,8 +250,8 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <td>bigint(20) unsigned</td>
     <td>NO</td>
     <td>PRI</td>
-	<th>PRIMARY KEY</th>
     <td>NULL</td>
+	<th>PRIMARY KEY</th>
     <td>auto_increment</td>
   </tr>
   <tr>
@@ -319,8 +319,8 @@ CourseSeeder and StudentSeeder are built to populate the tables intitially.
     <th>Type</th>
     <th>Null</th>
     <th>Key</th>
-	<th>Constraints</th>
-    <th>Default</th>
+	<th>Default</th>
+    <th>Constraints</th>
     <th>Extra</th>
   </tr>
   <tr>
