@@ -1,12 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -21,13 +12,161 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Universit courses registration portal (API)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+In this repository, following two APIs are built.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. API to show list of all offered courses
+2. API for course registraion
 
-## Laravel Sponsors
+# 1. API to show list of all offered courses
+This API returns list of all courses. Eeach couse contains following information.
+a. id
+b. name
+c. capacity (maximum student registration)
+d. registered_students_count (number of registered students)
+
+The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It returns the response in JSON format. Below are the sample responses of this API
+
+a. Success response
+{
+    "success": true,
+    "code": 200,
+    "message": "Please select a course.",
+    "content": [
+        {
+            "id": 2,
+            "name": "zueaoabusf",
+            "capacity": 8,
+            "registered_students_count": 5
+        },
+        {
+            "id": 3,
+            "name": "nlkgfckas3",
+            "capacity": 5,
+            "registered_students_count": 2
+        }
+    ]
+}
+
+b. Fail response 
+{
+    "success": false,
+    "code": 500,
+    "message": "We are under maintenance! Please check back later"
+}
+
+# 2. API for course registraion
+
+The is API is to register any course. The endpoint is "{{base_url}}/students/register" (POST request). The data required to be passed is "student_id" and "course_id" following is an example (very basic structure).
+
+{
+    "student_id": 12,
+    "course_id": 4
+}
+
+It returns 3 mainly three types of responses (success, validation fail, and server error). Below are the samples of all three types of responses.
+
+a. Sucsess
+{
+    "success": true,
+    "code": 200,
+    "message": "You have registered for this course successfully!",
+    "content": {
+        "student_id": 12,
+        "course_id": 4,
+        "updated_at": "2022-03-19T01:14:02.000000Z",
+        "created_at": "2022-03-19T01:14:02.000000Z",
+        "id": 1
+    }
+}
+
+b. Validation fail
+{
+    "success": false,
+    "code": 400,
+    "message": "Validation failed",
+    "content": {
+        "course_id": [
+            "The maximum capcity is filled."
+        ]
+    }
+}
+
+c. Server error
+{
+    "success": false,
+    "code": 500,
+    "message": "We are under maintenance! Please check back later"
+}
+
+Collection of APIs (JSON)
+{
+	"info": {
+		"_postman_id": "65b7aa0a-ffad-4672-9efe-d9a080472911",
+		"name": "CourseRegistration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{base_url}}/students/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 7,\n    \"course_id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/students/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{base_url}}/courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/courses",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
+
+# Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
