@@ -12,23 +12,25 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Universit courses registration portal (API)
+# Universit courses registration portal (API)
 
 In this repository, following two APIs are built.
 
-1. API to show list of all offered courses
-2. API for course registraion
+- API to show list of all offered courses
+- API for course registraion
 
-# 1. API to show list of all offered courses
+## 1. API to show list of all offered courses
+
 This API returns list of all courses. Eeach couse contains following information.
-a. id
-b. name
-c. capacity (maximum student registration)
-d. registered_students_count (number of registered students)
+- id
+- name
+- capacity (maximum student registration)
+- registered_students_count (number of registered students)
 
 The endpoint "{{base_url}}/courses" (GET request) is required to be hit. It returns the response in JSON format. Below are the sample responses of this API
 
-a. Success response
+- Success response
+```
 {
     "success": true,
     "code": 200,
@@ -49,25 +51,31 @@ a. Success response
     ]
 }
 
-b. Fail response 
+```
+- Fail response 
+```
 {
     "success": false,
     "code": 500,
     "message": "We are under maintenance! Please check back later"
 }
+```
 
-# 2. API for course registraion
+## 2. API for course registraion
 
 The is API is to register any course. The endpoint is "{{base_url}}/students/register" (POST request). The data required to be passed is "student_id" and "course_id" following is an example (very basic structure).
 
+```
 {
     "student_id": 12,
     "course_id": 4
 }
+```
 
-It returns 3 mainly three types of responses (success, validation fail, and server error). Below are the samples of all three types of responses.
+It returns mainly three types of responses (success, validation fail, and server error). Below are the samples of all three types of responses.
 
-a. Sucsess
+- Sucsess
+```
 {
     "success": true,
     "code": 200,
@@ -80,8 +88,10 @@ a. Sucsess
         "id": 1
     }
 }
+```
 
-b. Validation fail
+- Validation fail
+```
 {
     "success": false,
     "code": 400,
@@ -92,15 +102,19 @@ b. Validation fail
         ]
     }
 }
+```
 
-c. Server error
+- Server error
+```
 {
     "success": false,
     "code": 500,
     "message": "We are under maintenance! Please check back later"
 }
+```
 
 Collection of APIs (JSON)
+```
 {
 	"info": {
 		"_postman_id": "65b7aa0a-ffad-4672-9efe-d9a080472911",
@@ -165,6 +179,7 @@ Collection of APIs (JSON)
 		}
 	]
 }
+```
 
 # Laravel Sponsors
 
